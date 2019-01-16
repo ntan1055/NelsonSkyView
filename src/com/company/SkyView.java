@@ -3,9 +3,6 @@ package com.company;
 public class SkyView
 {
     private double[][] view;
-    private int numRows;
-    private int numCols;
-    private double[] scanned;
 
     public SkyView(int numRows, int numCols, double[] scanned)
     {
@@ -21,7 +18,8 @@ public class SkyView
                     i++;
                 }
             }
-            else{
+            else
+            {
                 for(int col = numCols - 1; col >= 0; col--)
                 {
                     view[row][col] = scanned[i];
@@ -33,18 +31,17 @@ public class SkyView
 
     public double getAverage(int startRow, int endRow, int startCol, int endCol)
     {
-        double average;
         double sum = 0.0;
         int count = 0;
-        for(int i = startRow; i < endRow; i++)
+        for(int i = startRow; i <= endRow; i++)
         {
-            for(int j = startCol; j < endCol; j++)
+            for(int j = startCol; j <= endCol; j++)
             {
-                sum = sum + view[i][j];
-                count = count + 1;
+                sum += view[i][j];
+                count++;
             }
         }
-        average = sum / count;
+        double average = sum / count;
         return average;
     }
 }
